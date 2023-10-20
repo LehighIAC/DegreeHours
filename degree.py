@@ -42,6 +42,11 @@ def calculate():
         
         # Select mode
         sign = 1 if mode == "Cooling" else -1
+
+        if sign==1 and basetemp > setback:
+            raise Exception("Setback temperature must be higher than base temperature.")
+        if sign==-1 and basetemp < setback:
+            raise Exception("Setback temperature must be lower than base temperature.")
         
         # Assemble schedule tuple
         schedule = []
@@ -398,8 +403,8 @@ frame_right = tk.Frame(root)
 tk.Label(frame_right, text="Thermostat Programming Schedule").grid(row=0, column=0, columnspan=8, pady=pad)
 tk.Label(frame_right, text="Start", width=Config['rightlabel'], anchor='w').grid(row=2, column=0, pady=2*pad)
 tk.Label(frame_right, text="End", width=Config['rightlabel'], anchor='w').grid(row=3, column=0, pady=2*pad)
-tk.Label(frame_right, text="All-day", width=Config['rightlabel'], anchor='w').grid(row=4, column=0, pady=pad)
-tk.Label(frame_right, text="Holiday", width=Config['rightlabel'], anchor='w').grid(row=5, column=0, pady=pad)
+tk.Label(frame_right, text="24 hours", width=Config['rightlabel'], anchor='w').grid(row=4, column=0, pady=pad)
+tk.Label(frame_right, text="0 hours", width=Config['rightlabel'], anchor='w').grid(row=5, column=0, pady=pad)
 
 days=['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 hours=list(range(0,25))
