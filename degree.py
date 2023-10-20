@@ -272,7 +272,7 @@ def config():
         MacConfig['middleradio'] = 10
         MacConfig['middlespin'] = 8
         MacConfig['middledrop'] = 6
-        MacConfig['rightlabel'] = 5
+        MacConfig['rightlabel'] = 6
         MacConfig['rightdrop'] = 2
         MacConfig['rightresult'] = 8
         return MacConfig
